@@ -7,7 +7,8 @@
 
 1. Digital Ocean, create docker app
 2. sign in to new app
-3. `apt-get install git docker-compose`
+3. `apt-get install git`
+4. Install [docker-compose](http://docs.docker.com/compose/install/)
 4. mkdir /var/blocker
 5. cd /var/blocker
 6. `docker-compose build`

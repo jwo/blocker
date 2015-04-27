@@ -1,0 +1,38 @@
+dbdata:
+  image: cogniteev/echo 
+  volumes:
+    - /var/lib/mysql
+
+db:
+  image: mysql
+  ports:
+    - "3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: 'yolo2015'
+  volumes_from:
+    - dbdata
+
+app:
+  build: .
+  command: bundle exec rails s -p 3000 -b '0.0.0.0'
+  volumes:
+    - .:/myapp
+  ports:
+    - "3000:3000"
+  links:
+    - db
+
+prometheus:
+  build: docker_config/prometheus
+  ports:
+    - "9090:9090"
+  links:
+    - containerexporter
+
+containerexporter:
+  image: prom/container-exporter
+  ports:
+    - "9104:9104"
+  volumes:
+    - /sys/fs/cgroup:/cgroup 
+    - /var/run/docker.sock:/var/run/docker.sock 

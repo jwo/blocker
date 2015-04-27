@@ -24,9 +24,15 @@ TODO: we'll add inspeqtor to watch services and individual memory behavior.
 4. mkdir /var/blocker
 5. cd /var/blocker
 6. `git clone https://github.com/jwo/blocker.git .`
-6. `docker-compose build`
-8. `docker-compose run app rake db:migrate`
-7. `docker-compose up`
+6. `docker-compose build` (5 minutes as it pulls images which we customize)
+7. `docker-compose up` (5 minutes as it pulls images we do not customize)
+8. open an additional ssh connection and cd to /var/blocker
+8. `docker-compose run app rake db:setup` 
+
+## Stuff you can do:
+
+1. Connect to the block: http://yourip:3000
+2. Connect to prometheus monitoring: http://yourip:9090
 
 ## Other resources
 

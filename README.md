@@ -1,6 +1,7 @@
 # Blocker - Sample Rails Blog app, on docker
 
-* Monitoring: Prometheus
+* System Monitoring: Prometheus
+* Service monitoring: Inspeqtor
 * DB: mysql
 
 ## Why?

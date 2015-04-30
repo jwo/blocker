@@ -1,16 +1,18 @@
-dbdata:
+mysqldata:
   image: cogniteev/echo 
   volumes:
     - /var/lib/mysql
 
 db:
-  image: mysql
-  ports:
+  build: docker_config/mysql
+  command: /usr/bin/supervisord
+  expose:
     - "3306"
   environment:
-    MYSQL_ROOT_PASSWORD: 'yolo2015'
+    MYSQL_USER: 'root'
+    MYSQL_PASS: 'yolo2015'
   volumes_from:
-    - dbdata
+    - mysqldata
 
 app:
   build: .

@@ -1,0 +1,3 @@
+check service mysql with hostname db, port 3306, username root, password yolo2015
+  if memory:rss > 1g then alert
+  if mysql:Queries > 1/sec then alert
